@@ -1,0 +1,17 @@
+body {
+    margin: 0px;
+    width: 100vw;
+    max-height: 100vh;
+    overflow-x: hidden;
+
+    #screen {
+        margin: auto;
+        border: 1px solid green;
+    }
+    #log {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column-reverse;
+        overflow-y: scroll;
+    }
+}
