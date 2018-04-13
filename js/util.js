@@ -6,6 +6,10 @@
 import { Pencil } from "https://cdn.rawgit.com/Nektro/modules.js/1ad843a/src/pencil.js";
 
 //
+import pipeline from "https://unpkg.com/pipeline-operator/index.js";
+export const pip = pipeline;
+
+//
 const LOG_ELEMENT = document.getElementById('log');
 
 export const VERSION_MAJOR = 0;
