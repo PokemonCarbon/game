@@ -9,6 +9,12 @@ import * as Type from "./type.js";
 import * as Mapp from "./map.js";
 
 //
+const R = {
+    pokemon: Pokemon,
+    maps: Mapp
+}
+
+//
 export class Region {
     constructor(args) {
         for (const o in args) {
@@ -64,4 +70,25 @@ export const build = async (id) => {
         maps: manifest.maps || []
     });
     return r;
+}
+export function get(type) {
+    return function(id) {
+        return async function(reg) {
+            if (reg[type].includes(id)) {
+                const p = `${reg.id}:${id}`;
+                if (a[type].has(p)) {
+                    return a[type].get(p);
+                }
+                else {
+                    const t = a.regions.get(reg.id).get(type).get(id);
+                    const l = a.pipe(t, R[type].load(reg))
+                    a[type].set(p, l);
+                    return l;
+                }
+            }
+            else {
+                return Promise.reject(`Region ${reg.id} does not include map ${id}`);
+            }
+        }
+    }
 }
