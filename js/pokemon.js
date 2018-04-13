@@ -7,8 +7,10 @@ import * as a from "./util.js";
 
 //
 export class Pokemon {
-    constructor() {
-        //
+    constructor(args) {
+        for (const o in args) {
+            this[o] = args[o];
+        }
     }
 }
 export const build = async (reg, id) => {
