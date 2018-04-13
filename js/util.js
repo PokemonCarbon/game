@@ -27,6 +27,7 @@ export const LogType = {
 //
 export function log(t, m) {
     LOG_ELEMENT.innerHTML += `<div style="color:#${t[1]}">[${t[0]}]: ${m}</div>`;
+    LOG_ELEMENT.scrollTop = LOG_ELEMENT.scrollHeight;
 }
 export function assign(o, k, v) {
     o[k] = v;
