@@ -19,6 +19,7 @@ export const build = async (id) => {
     a.log(a.LogType.INFO, `Creating Region: ${id}`);
     const manifest = await fetch(`../${id}/manifest.json`).then(x => x.json());
     const { api_version, name, version } = manifest;
+    const reg = new Map();
     const types = new Map();
     const pokemon = new Map();
     const maps = new Map();
@@ -48,6 +49,11 @@ export const build = async (id) => {
             maps.set(mp.id, mp);
         }
     }
+
+    reg.set('types', types);
+    reg.set('pokemon', pokemon);
+    reg.set('maps', maps);
+    a.regions.set(id, reg);
 
     const r = new Region({
         id,

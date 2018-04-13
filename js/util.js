@@ -19,6 +19,9 @@ export const VERSION = `${VERSION_MAJOR}.${VERSION_API}.${VERSION_MINOR}`;
 export const can = document.getElementById('screen');
 export const con = can.getContext('2d');
 export const pen = new Pencil(con);
+export const regions = new Map();
+export const pokemon = new Map();
+export const maps = new Map();
 
 //
 export const LogType = {
