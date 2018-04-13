@@ -6,6 +6,7 @@
 import * as a from "./util.js";
 import * as Pokemon from "./pokemon.js";
 import * as Type from "./type.js";
+import * as Mapp from "./map.js";
 
 //
 export class Region {
