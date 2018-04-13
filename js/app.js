@@ -23,6 +23,6 @@ a.log(a.LogType.ERROR, 'Test Error log.');
 Promise.all(modsList.map((v,i) => Region.build(v)))
 .then(x => {
     a.log(a.LogType.GOOD, `Successfully loaded Regions: [${x.map(v => `'${v.name}'`)}]`);
-    a.log(a.LogType.INFO, `Starting game!`);
+    a.log(a.LogType.GOOD, `Starting game!`);
     console.log(x);
 });
