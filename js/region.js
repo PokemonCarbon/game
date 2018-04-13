@@ -21,6 +21,7 @@ export const build = async (id) => {
     const { api_version, name, version } = manifest;
     const types = new Map();
     const pokemon = new Map();
+    const maps = new Map();
 
     if (manifest.types !== undefined) {
         for (const t in manifest.types) {
@@ -39,6 +40,12 @@ export const build = async (id) => {
         const pk_ar = await Promise.all(manifest.pokemon.map(v => Pokemon.build(id, v)));
         for (const p of pk_ar) {
             pokemon.set(p.InternalName.toLowerCase(), p);
+        }
+    }
+    if (manifest.maps !== undefined) {
+        const mp_ar = await Promise.all(manifest.maps.map(x => Mapp.build(id, x)))
+        for (const mp of mp_ar) {
+            maps.set(mp.id, mp);
         }
     }
 
