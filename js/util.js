@@ -2,6 +2,8 @@
  */
 //
 'use strict';
+//
+import { Pencil } from "https://cdn.rawgit.com/Nektro/modules.js/1ad843a/src/pencil.js";
 
 //
 const LOG_ELEMENT = document.getElementById('log');
