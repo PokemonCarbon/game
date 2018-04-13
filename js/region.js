@@ -24,6 +24,7 @@ export const build = async (id) => {
 
     if (manifest.types !== undefined) {
         for (const t in manifest.types) {
+            a.log(a.LogType.INFO, `Creating Type: ${id}:${t}`);
             const [ name, weakness, resistance, immunity, special ] = manifest.types[t];
             types.set(t, new Type.Type({
                 name,
