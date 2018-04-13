@@ -37,3 +37,8 @@ export function assign(o, k, v) {
     o[k] = v;
     return o;
 }
+export function parse_ini(text) {
+    return text.split('\n')
+        .map(x => x.split('='))
+        .reduce((ac,cv) => (cv.length === 1) ? (ac) : (assign(ac, ...cv)), {});
+}
