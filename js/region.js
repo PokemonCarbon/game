@@ -49,6 +49,12 @@ export const build = async (id) => {
         }
     }
 
-    const r = new Region({ api_version, name, version, types, pokemon });
+    const r = new Region({
+        id,
+        name: manifest.name,
+        api_version: manifest.api_version,
+        pokemon: manifest.pokemon || [],
+        maps: manifest.maps || []
+    });
     return r;
 }
