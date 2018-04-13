@@ -27,4 +27,5 @@ Promise.all(modsList.map((v,i) => Region.build(v)))
     a.log(a.LogType.INFO, `Starting in first Region: ${x[0].name}`);
     a.log(a.LogType.INFO, `Starting in first Map: ${x[0].maps[0]}`)
     console.log(x);
+    console.log(a.regions);
 });
