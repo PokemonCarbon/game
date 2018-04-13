@@ -5,6 +5,7 @@
 //
 import * as a from "./util.js";
 import * as Pokemon from "./pokemon.js";
+import * as Type from "./type.js";
 
 //
 export class Region {
