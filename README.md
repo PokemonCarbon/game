@@ -21,7 +21,7 @@ the Pokémon fan game commmunity.
 ## License
 Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 
-This game is open-source and shall not be used to generate direct income
+This game is open-source and shall not be used for commercial purposes
 
 Pokémon and associated assets Copyright (c) Nintendo
 
