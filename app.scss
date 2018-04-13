@@ -3,15 +3,18 @@ body {
     width: 100vw;
     max-height: 100vh;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 
     #screen {
         margin: auto;
         border: 1px solid green;
     }
     #log {
+        flex-grow: 1;
         border: 1px solid black;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         overflow-y: scroll;
     }
 }
