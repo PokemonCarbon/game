@@ -7,7 +7,7 @@ import { Pencil } from "https://cdn.rawgit.com/Nektro/modules.js/1ad843a/src/pen
 
 //
 import pipeline from "https://unpkg.com/pipeline-operator/index.js";
-export const pip = pipeline;
+export const pipe = pipeline;
 
 //
 const LOG_ELEMENT = document.getElementById('log');
