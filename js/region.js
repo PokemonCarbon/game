@@ -87,7 +87,7 @@ export function get(type) {
                 }
             }
             else {
-                return Promise.reject(`Region ${reg.id} does not include map ${id}`);
+                return Promise.reject(`${reg.name} does not include ${type} ${id}`);
             }
         }
     }
