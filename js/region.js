@@ -72,16 +72,16 @@ export const build = async (id) => {
     return r;
 }
 export function get(type) {
-    return function(id) {
+    return function(id, raw=false) {
         return async function(reg) {
-            if (reg[type].includes(id)) {
+            if (reg[type].includes(id) || raw) {
                 const p = `${reg.id}:${id}`;
                 if (a[type].has(p)) {
                     return a[type].get(p);
                 }
                 else {
                     const t = a.regions.get(reg.id).get(type).get(id);
-                    const l = a.pipe(t, R[type].load(reg))
+                    const l = a.pipe(raw ? id : t, R[type].load(reg))
                     a[type].set(p, l);
                     return l;
                 }
