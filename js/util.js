@@ -21,6 +21,7 @@ export const con = can.getContext('2d');
 export const pen = new Pencil(con);
 export const regions = new Map();
 export const pokemon = new Map();
+export const structures = new Map();
 export const maps = new Map();
 const audioCtx = new AudioContext();
 export const domParser = new DOMParser();

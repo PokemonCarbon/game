@@ -7,10 +7,12 @@ import * as a from "./util.js";
 import * as Pokemon from "./pokemon.js";
 import * as Type from "./type.js";
 import * as Mapp from "./map.js";
+import * as Structure from "./structure.js";
 
 //
 const R = {
     pokemon: Pokemon,
+    structures: Structure,
     maps: Mapp
 }
 
@@ -29,6 +31,7 @@ export const build = async (id) => {
     const reg = new Map();
     const types = new Map();
     const pokemon = new Map();
+    const structures = new Map();
     const maps = new Map();
 
     if (manifest.types !== undefined) {
@@ -59,6 +62,7 @@ export const build = async (id) => {
 
     reg.set('types', types);
     reg.set('pokemon', pokemon);
+    reg.set('structures', structures);
     reg.set('maps', maps);
     a.regions.set(id, reg);
 
@@ -67,6 +71,7 @@ export const build = async (id) => {
         name: manifest.name,
         api_version: manifest.api_version,
         pokemon: manifest.pokemon || [],
+        structures: manifest.structures || [],
         maps: manifest.maps || []
     });
     return r;
