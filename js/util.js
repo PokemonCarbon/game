@@ -45,6 +45,19 @@ export function parse_ini(text) {
         .map(x => x.split('='))
         .reduce((ac,cv) => (cv.length === 1) ? (ac) : (assign(ac, ...cv)), {});
 }
+export async function _fetch(url) {
+    return new Promise(resolve => {
+        return fetch(url)
+        .then(x => {
+            if (x.status !== 200) {
+                return Promise.reject(`${x.status}: ${url}`);
+            }
+            else {
+                return resolve(x);
+            }
+        });
+    })
+}
 export async function ffetch(url, type) {
     return await (await fetch(url))[type]();
 }
