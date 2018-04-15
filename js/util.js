@@ -66,3 +66,15 @@ export function ui8a_to_blob(type) {
         return new Blob( [ ui8a ], { type } );
     }
 }
+export function arraybuffer_to_image(width, height) {
+    return async function(ab) {
+        return new Promise(resolve => {
+            const ui8a = new Uint8Array(ab);
+            const img = document.createElement('img');
+            img.addEventListener('load', function(e) {
+                resolve(this);
+            });
+            img.src = (pipe(ui8a, ui8a_to_blob('image/png'), URL.createObjectURL));
+        })
+    }
+}
