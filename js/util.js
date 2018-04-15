@@ -22,6 +22,8 @@ export const pen = new Pencil(con);
 export const regions = new Map();
 export const pokemon = new Map();
 export const maps = new Map();
+const audioCtx = new AudioContext();
+export const domParser = new DOMParser();
 
 //
 export const LogType = {
