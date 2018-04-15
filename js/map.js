@@ -27,7 +27,11 @@ export const build = async (reg, id) => {
         map_top,
         map_bottom,
         map_left,
-        map_right
+        map_right,
+        walk: null,
+        teleport: null,
+        song: null,
+        layers: null
     });
 }
 export const load = (reg) => async (map) => {
@@ -57,6 +61,10 @@ export const load = (reg) => async (map) => {
     })
     .then(x => {
         const [walk, teleport, bgm, ...layers] = x;
-        return Promise.resolve({ walk, teleport, bgm, layers });
+        map.walk = walk;
+        map.teleport = teleport;
+        map.song = bgm;
+        map.layers = layers;
+        return Promise.resolve(map);
     });
 }
