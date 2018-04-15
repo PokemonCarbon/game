@@ -15,6 +15,7 @@ from Vermilion City.
 # Special Thanks
 This project would not be possible without some amazing people and projects from
 the Pokémon fan game commmunity.
+- [Pokémon](https://www.pokemon.com/us/) by [Nintendo](https://www.nintendo.com/) et al
 - [Pokémon Essentials](http://pokemonessentials.wikia.com/) by [@Maruno](https://twitter.com/maruno42)
 - and more!
 
