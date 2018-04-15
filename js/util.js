@@ -61,3 +61,8 @@ export async function _fetch(url) {
 export async function ffetch(url, type) {
     return await (await _fetch(url))[type]();
 }
+export function ui8a_to_blob(type) {
+    return function(ui8a) {
+        return new Blob( [ ui8a ], { type } );
+    }
+}
