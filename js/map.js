@@ -11,9 +11,6 @@ export class Mapp {
         for (const o in args) {
             this[o] = args[o];
         }
-        this.walk = [];
-        this.teleport = [];
-        this.layers = [];
     }
 }
 export const build = async (reg, id) => {
