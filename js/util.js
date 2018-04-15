@@ -78,3 +78,6 @@ export function arraybuffer_to_image(width, height) {
         })
     }
 }
+export async function arraybuffer_to_audio(ab) {
+    return pipe(ab, audioCtx.decodeAudioData.bind(audioCtx));
+}
