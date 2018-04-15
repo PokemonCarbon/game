@@ -4,6 +4,7 @@
 'use strict';
 //
 import * as a from "./util.js";
+import * as MappLayer from "./maplayer.js";
 
 //
 export class Mapp {
