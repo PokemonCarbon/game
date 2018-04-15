@@ -59,5 +59,5 @@ export async function _fetch(url) {
     })
 }
 export async function ffetch(url, type) {
-    return await (await fetch(url))[type]();
+    return await (await _fetch(url))[type]();
 }
