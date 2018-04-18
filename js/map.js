@@ -3,7 +3,7 @@
 //
 'use strict';
 //
-import * as a from "./util.js";
+import { log, LogType, pipe, ffetch, parse_ini, arraybuffer_to_image, arraybuffer_to_audio, _fetch } from "./util.js";
 import * as MappLayer from "./maplayer.js";
 
 //
@@ -15,14 +15,14 @@ export class Mapp {
     }
 }
 export const build = async (reg, id) => {
-    a.log(a.LogType.INFO, `Creating Map: ${reg}:${id}`);
-    const mpi = a.pipe(await a.ffetch(`../${reg}/maps/${id}/map.txt`, 'text'), a.parse_ini);
+    log(LogType.INFO, `Creating Map: ${reg}:${id}`);
+    const mpi = pipe(await ffetch(`../${reg}/maps/${id}/map.txt`, 'text'), parse_ini);
     const { width, height, layers, bgm, map_bottom, map_top, map_left, map_right } = mpi;
     return new Mapp({
         id,
-        width: a.pipe(width || 1, parseInt),
-        height: a.pipe(height || 1, parseInt),
-        layers: a.pipe(layers || 1, parseInt),
+        width: pipe(width || 1, parseInt),
+        height: pipe(height || 1, parseInt),
+        layers: pipe(layers || 1, parseInt),
         bgm,
         map_top,
         map_bottom,
@@ -35,10 +35,10 @@ export const build = async (reg, id) => {
     });
 }
 export const load = (reg) => async (map) => {
-    const r_walk = a._fetch(`../${reg.id}/maps/${map.id}/walk.png`);
-    const r_teleport = a._fetch(`../${reg.id}/maps/${map.id}/teleport.txt`);
-    const r_bgm = a._fetch(`../${reg.id}/maps/${map.id}/${map.bgm}`);
-    const r_layers = new Array(map.layers).fill(0).map((x,i) => a._fetch(`../${reg.id}/maps/${map.id}/layer-${i}.json`));
+    const r_walk = _fetch(`../${reg.id}/maps/${map.id}/walk.png`);
+    const r_teleport = _fetch(`../${reg.id}/maps/${map.id}/teleport.txt`);
+    const r_bgm = _fetch(`../${reg.id}/maps/${map.id}/${map.bgm}`);
+    const r_layers = new Array(map.layers).fill(0).map((x,i) => _fetch(`../${reg.id}/maps/${map.id}/layer-${i}.json`));
     return await Promise.resolve([r_walk, r_teleport, r_bgm, ...r_layers])
     .then(x => Promise.all(x))
     .then(x => {
@@ -53,9 +53,9 @@ export const load = (reg) => async (map) => {
     .then(x => {
         const [walk, teleport, bgm, ...layers] = x;
         return Promise.all([
-            a.pipe(walk, a.arraybuffer_to_image(map.width, map.height)),
+            pipe(walk, arraybuffer_to_image(map.width, map.height)),
             teleport,
-            a.pipe(bgm, a.arraybuffer_to_audio),
+            pipe(bgm, arraybuffer_to_audio),
             ...layers.map(y => MappLayer.build(reg,map)(y))
         ]);
     })
