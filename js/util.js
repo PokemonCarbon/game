@@ -3,11 +3,14 @@
 //
 'use strict';
 //
-import { Pencil } from "https://cdn.rawgit.com/Nektro/modules.js/1ad843a/src/pencil.js";
+import * as i from "./imports.js";
+import * as Game from "./game.js";
+import * as Player from "./player.js";
 
 //
-import pipeline from "https://unpkg.com/pipeline-operator/index.js";
-export const pipe = pipeline;
+export const pipe = i.pipeline;
+export const Pencil = i.Pencil;
+export const geometry = i.geometry;
 
 //
 const LOG_ELEMENT = document.getElementById('log');
