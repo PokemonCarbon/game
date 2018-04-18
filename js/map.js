@@ -35,21 +35,12 @@ export const build = async (reg, id) => {
     });
 }
 export const load = (reg) => async (map) => {
-    const r_walk = _fetch(`../${reg.id}/maps/${map.id}/walk.png`);
-    const r_teleport = _fetch(`../${reg.id}/maps/${map.id}/teleport.txt`);
-    const r_bgm = _fetch(`../${reg.id}/maps/${map.id}/${map.bgm}`);
-    const r_layers = new Array(map.layers).fill(0).map((x,i) => _fetch(`../${reg.id}/maps/${map.id}/layer-${i}.json`));
+    const r_walk = ffetch(`../${reg.id}/maps/${map.id}/walk.png`, 'arrayBuffer');
+    const r_teleport = ffetch(`../${reg.id}/maps/${map.id}/teleport.txt`, 'text');
+    const r_bgm = ffetch(`../${reg.id}/maps/${map.id}/${map.bgm}`, 'arrayBuffer');
+    const r_layers = new Array(map.layers).fill(0).map((x,i) => ffetch(`../${reg.id}/maps/${map.id}/layer-${i}.json`, 'json'));
     return await Promise.resolve([r_walk, r_teleport, r_bgm, ...r_layers])
     .then(x => Promise.all(x))
-    .then(x => {
-        const [walk, teleport, bgm, ...layers] = x;
-        return Promise.all([
-            walk.arrayBuffer(),
-            teleport.text(),
-            bgm.arrayBuffer(),
-            ...layers.map(v => v.json())
-        ]);
-    })
     .then(x => {
         const [walk, teleport, bgm, ...layers] = x;
         return Promise.all([
