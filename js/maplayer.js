@@ -3,7 +3,7 @@
 //
 'use strict';
 //
-import * as a from "./util.js";
+import { pipe } from "./util.js";
 import { get } from "./region.js";
 
 //
@@ -23,7 +23,7 @@ export const build = (reg,map) => async (ml) => {
     const [ st, ly ] = ml;
 
     const tilesets = new Set();
-    const structs = await Promise.all(st.map(x => a.pipe(reg, get('structures')(x, true))));
+    const structs = await Promise.all(st.map(x => pipe(reg, get('structures')(x, true))));
     structs.forEach(v => tilesets.add(v.tfgid));
 
     // TODO redo since callbacks mess up async/await code
