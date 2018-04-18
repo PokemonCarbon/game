@@ -3,7 +3,7 @@
 //
 'use strict';
 //
-import * as a from "./util.js";
+import { ffetch, arraybuffer_to_image } from "./util.js";
 
 //
 export class Structure {
@@ -19,7 +19,7 @@ export const load = (reg) => async (struc) => {
         gid: struc[1],
         rid: struc[0] + struc[1],
         value: await Promise.resolve(struc[2])
-            .then(x => a.arraybuffer_to_image()(x))
             .then(x => ffetch(`../${reg.id}/structures/${x}.png`, 'arrayBuffer'))
+            .then(x => arraybuffer_to_image()(x))
     });
 }
