@@ -46,7 +46,6 @@ export const build = (reg,map) => async (ml) => {
                     y: j,
                     img: temp.value
                 };
-                return 0;
             });
         });
     })
