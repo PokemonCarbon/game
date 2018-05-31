@@ -1,7 +1,7 @@
 /**
  */
 //
-'use strict';
+"use strict";
 //
 import { pipe } from "./util.js";
 import { get } from "./region.js";
@@ -23,11 +23,11 @@ export const build = (reg,map) => async (ml) => {
     const [ st, ly ] = ml;
 
     const tilesets = new Set();
-    const structs = await Promise.all(st.map(x => pipe(reg, get('structures')(x, true))));
+    const structs = await Promise.all(st.map(x => pipe(reg, get("structures")(x, true))));
     structs.forEach(v => tilesets.add(v.tfgid));
 
     // TODO redo since callbacks mess up async/await code
-    const layers = ly.map((x,i) => {
+    const layers = ly.map((x) => {
         return x.map((y,j) => {
             return y.map((z,k) => {
                 if (z === 0) {
@@ -57,10 +57,10 @@ export const build = (reg,map) => async (ml) => {
 
     const width = map.width * 32;
     const height = map.height * 32;
-    const can = document.createElement('canvas');
-    can.setAttribute('width', width);
-    can.setAttribute('height', height);
-    const con = can.getContext('2d');
+    const can = document.createElement("canvas");
+    can.setAttribute("width", width);
+    can.setAttribute("height", height);
+    const con = can.getContext("2d");
 
     for (const i of layers) {
         con.drawImage(i.img, i.x * 32, i.y * 32 - (((i.img.height / 32) - 1) * 32));
@@ -71,4 +71,4 @@ export const build = (reg,map) => async (ml) => {
         height,
         value: can
     });
-}
+};

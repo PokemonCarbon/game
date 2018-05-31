@@ -1,7 +1,7 @@
 /**
  */
 //
-'use strict';
+"use strict";
 
 //
 import _pipeline from "https://unpkg.com/pipeline-operator/index.js";

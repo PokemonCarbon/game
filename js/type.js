@@ -1,7 +1,7 @@
 /**
  */
 //
-'use strict';
+"use strict";
 //
 import * as a from "./util.js";
 

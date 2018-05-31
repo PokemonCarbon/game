@@ -1,7 +1,7 @@
 /**
  */
 //
-'use strict';
+"use strict";
 //
 import * as a from "./util.js";
 import * as Pokemon from "./pokemon.js";
@@ -54,17 +54,17 @@ export const build = async (id) => {
         }
     }
     if (manifest.maps !== undefined) {
-        const mp_ar = await Promise.all(manifest.maps.map(x => Mapp.build(id, x)))
+        const mp_ar = await Promise.all(manifest.maps.map(x => Mapp.build(id, x)));
         for (const mp of mp_ar) {
             maps.set(mp.id, mp);
         }
     }
 
-    reg.set('types', types);
-    reg.set('pokemon', pokemon);
-    reg.set('structures', structures);
-    reg.set('maps', maps);
-    a.regions.set(id, reg);
+    reg.set("types", types);
+    reg.set("pokemon", pokemon);
+    reg.set("structures", structures);
+    reg.set("maps", maps);
+    registry_regions.set(id, reg);
 
     const r = new Region({
         id,
@@ -75,7 +75,7 @@ export const build = async (id) => {
         maps: manifest.maps || []
     });
     return r;
-}
+};
 export function get(type) {
     return function(id, raw=false) {
         return async function(reg) {
@@ -94,6 +94,6 @@ export function get(type) {
             else {
                 return Promise.reject(`${reg.name} does not include ${type} ${id}`);
             }
-        }
-    }
+        };
+    };
 }
