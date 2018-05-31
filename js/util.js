@@ -14,6 +14,7 @@ export const geometry = i.geometry;
 
 //
 const LOG_ELEMENT = document.getElementById('log');
+const audioCtx = new AudioContext();
 
 export const VERSION_MAJOR = 0;
 export const VERSION_API   = 1;
@@ -22,7 +23,6 @@ export const VERSION = `${VERSION_MAJOR}.${VERSION_API}.${VERSION_MINOR}`;
 export const can = document.getElementById('screen');
 export const con = can.getContext('2d');
 export const pen = new Pencil(con);
-const audioCtx = new AudioContext();
 export const WIDTH = can.width;
 export const HEIGHT = can.height;
 export const registry_regions = new Map();
