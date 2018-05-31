@@ -22,11 +22,11 @@ export const VERSION = `${VERSION_MAJOR}.${VERSION_API}.${VERSION_MINOR}`;
 export const can = document.getElementById('screen');
 export const con = can.getContext('2d');
 export const pen = new Pencil(con);
-export const regions = new Map();
-export const pokemon = new Map();
-export const structures = new Map();
-export const maps = new Map();
 const audioCtx = new AudioContext();
+export const registry_regions = new Map();
+export const registry_maps = new Map();
+export const registry_structures = new Map();
+export const registry_pokemon = new Map();
 export const domParser = new DOMParser();
 
 //
