@@ -60,7 +60,7 @@ export async function _fetch(url) {
     return new Promise((resolve,reject) => {
         return fetch(url)
         .then(x => {
-            if (x.status !== 200) {
+            if (!(x.ok)) {
                 return reject(x);
             }
             else {
