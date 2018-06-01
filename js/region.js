@@ -10,13 +10,6 @@ import * as Mapp from "./map.js";
 import * as Structure from "./structure.js";
 
 //
-const R = {
-    pokemon: Pokemon,
-    structures: Structure,
-    maps: Mapp
-}
-
-//
 export class Region {
     constructor(args) {
         for (const o in args) {
@@ -77,6 +70,11 @@ export const build = async (id) => {
     return r;
 };
 export function get(type) {
+    const R = {
+        pokemon: Pokemon,
+        structures: Structure,
+        maps: Mapp
+    };
     return function(id, raw=false) {
         return async function(reg) {
             if (reg[type].includes(id) || raw) {
