@@ -35,12 +35,15 @@ export const LogType = {
     GOOD:  ["GOOD",  "4CAF50", "log"  ],
     WARN:  ["WARN",  "FF9800", "warn" ],
     ERROR: ["ERROR", "F44336", "error"]
+    DEBUG: [""]
 };
 
 //
 export function log(t, m) {
-    LOG_ELEMENT.innerHTML += `<div style="color:#${t[1]}">[${t[0]}]: ${m}</div>`;
-    LOG_ELEMENT.scrollTop = LOG_ELEMENT.scrollHeight;
+    if (t[0].length > 0) {
+        LOG_ELEMENT.innerHTML += `<div style="color:#${t[1]}">[${t[0]}]: ${m}</div>`;
+        LOG_ELEMENT.scrollTop = LOG_ELEMENT.scrollHeight;
+    }
 }
 export function assign(o, k, v) {
     o[k] = v;
