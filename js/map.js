@@ -34,6 +34,7 @@ export const build = async (reg, id) => {
     });
 };
 export const load = (reg) => async (map) => {
+    log(LogType.INFO, `Loading Map: ${reg.id}:${map.id}`);
     const r_walk = ffetch(`../${reg.id}/maps/${map.id}/walk.png`, "arrayBuffer");
     const r_teleport = ffetch(`../${reg.id}/maps/${map.id}/teleport.txt`, "text");
     const r_bgm = ffetch(`../${reg.id}/maps/${map.id}/${map.bgm}`, "arrayBuffer");
