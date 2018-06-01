@@ -17,4 +17,4 @@ export const build = async (reg, id) => {
     log(LogType.INFO, `Creating Pokemon: ${reg}:${id}`);
     const pki = await ffetch(`../${reg}/pokemon/${id}/pokemon.ini`, "text");
     return new Pokemon(pipe(pki, parse_ini));
-}
+};
