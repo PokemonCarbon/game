@@ -57,16 +57,19 @@ export function parse_ini(text) {
     .reduce((ac,cv) => (cv.length === 1) ? (ac) : (assign(ac, ...cv)), {});
 }
 export async function _fetch(url) {
-    return new Promise(resolve => {
+    return new Promise((resolve,reject) => {
         return fetch(url)
         .then(x => {
             if (x.status !== 200) {
-                return Promise.reject(`${x.status}: ${url}`);
+                return reject(x);
             }
             else {
                 return resolve(x);
             }
         });
+    })
+    .catch(ex => {
+        log(LogType.ERROR, `Failed fetching ${ex.url}`);
     });
 }
 export async function ffetch(url, type) {
