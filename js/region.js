@@ -3,7 +3,7 @@
 //
 "use strict";
 //
-import * as a from "./util.js";
+import { LogType, log, ffetch, registry_regions, registry_pokemon, registry_maps, registry_structures, pipe } from "./util.js";
 import * as Pokemon from "./pokemon.js";
 import * as Type from "./type.js";
 import * as Mapp from "./map.js";
@@ -18,9 +18,9 @@ export class Region {
     }
 }
 export const build = async (id) => {
-    a.log(a.LogType.INFO, `Creating Region: ${id}`);
-    const manifest = await fetch(`../${id}/manifest.json`).then(x => x.json());
     const { api_version, name, version } = manifest;
+    log(LogType.INFO, `Creating Region: ${id}`);
+    const manifest = await ffetch(`../${id}/manifest.json`, "json");
     const reg = new Map();
     const types = new Map();
     const pokemon = new Map();
@@ -29,7 +29,7 @@ export const build = async (id) => {
 
     if (manifest.types !== undefined) {
         for (const t in manifest.types) {
-            a.log(a.LogType.INFO, `Creating Type: ${id}:${t}`);
+            log(LogType.INFO, `Creating Type: ${id}:${t}`);
             const [ name, weakness, resistance, immunity, special ] = manifest.types[t];
             types.set(t, new Type.Type({
                 name,
@@ -75,17 +75,25 @@ export function get(type) {
         structures: Structure,
         maps: Mapp
     };
+    const G = {
+        pokemon: registry_pokemon,
+        maps: registry_maps,
+        structures: registry_structures,
+    };
     return function(id, raw=false) {
         return async function(reg) {
             if (reg[type].includes(id) || raw) {
                 const p = `${reg.id}:${id}`;
-                if (a[type].has(p)) {
-                    return a[type].get(p);
+                if (!(type in G)) {
+                    console.warn(`${type} is empty in G map!`);
+                }
+                if (G[type].has(p)) {
+                    return G[type].get(p);
                 }
                 else {
-                    const t = a.regions.get(reg.id).get(type).get(id);
-                    const l = a.pipe(raw ? id : t, R[type].load(reg))
-                    a[type].set(p, l);
+                    const t = registry_regions.get(reg.id).get(type).get(id);
+                    const l = pipe(raw ? id : t, R[type].load(reg));
+                    G[type].set(p, l);
                     return l;
                 }
             }
