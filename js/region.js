@@ -59,7 +59,7 @@ export const build = async (id) => {
     reg.set("maps", maps);
     registry_regions.set(id, reg);
 
-    const r = new Region({
+    return new Region({
         api_version,
         id,
         name,
@@ -68,7 +68,6 @@ export const build = async (id) => {
         structures: manifest.structures || [],
         maps: manifest.maps || []
     });
-    return r;
 };
 export function get(type) {
     const R = {
