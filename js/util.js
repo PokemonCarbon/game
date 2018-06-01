@@ -4,8 +4,6 @@
 "use strict";
 //
 import * as i from "./imports.js";
-import * as Game from "./game.js";
-import * as Player from "./player.js";
 
 //
 export const pipe = i.pipeline;

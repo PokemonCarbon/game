@@ -3,7 +3,7 @@
 //
 "use strict";
 //
-import { pen, pipe, log, LogType, game, player } from "./util.js";
+import { pen, pipe, log, LogType, pipe_async } from "./util.js";
 import * as Region from "./region.js";
 
 //
