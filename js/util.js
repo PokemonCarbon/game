@@ -31,10 +31,10 @@ export const domParser = new DOMParser();
 
 //
 export const LogType = {
-    INFO:  ["INFO",  "000000", "debug"],
-    GOOD:  ["GOOD",  "4CAF50", "log"  ],
-    WARN:  ["WARN",  "FF9800", "warn" ],
-    ERROR: ["ERROR", "F44336", "error"]
+    INFO:  ["INFO",  "000000"],
+    GOOD:  ["GOOD",  "4CAF50"],
+    WARN:  ["WARN",  "FF9800"],
+    ERROR: ["ERROR", "F44336"],
     DEBUG: [""]
 };
 
