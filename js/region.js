@@ -18,9 +18,9 @@ export class Region {
     }
 }
 export const build = async (id) => {
-    const { api_version, name, version } = manifest;
     log(LogType.INFO, `Creating Region: ${id}`);
     const manifest = await ffetch(`../${id}/manifest.json`, "json");
+    const { api_version, name, version } = manifest;
     const reg = new Map();
     const types = new Map();
     const pokemon = new Map();
@@ -60,9 +60,10 @@ export const build = async (id) => {
     registry_regions.set(id, reg);
 
     const r = new Region({
+        api_version,
         id,
-        name: manifest.name,
-        api_version: manifest.api_version,
+        name,
+        version,
         pokemon: manifest.pokemon || [],
         structures: manifest.structures || [],
         maps: manifest.maps || []
