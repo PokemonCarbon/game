@@ -3,7 +3,7 @@
 //
 "use strict";
 //
-import { ffetch, arraybuffer_to_image } from "./util.js";
+import { ffetch, arraybuffer_to_image, log, LogType } from "./util.js";
 
 //
 export class Structure {
@@ -14,6 +14,7 @@ export class Structure {
     }
 }
 export const load = (reg) => async (struc) => {
+    log(LogType.DEBUG, `Creating Structure: ${reg.id}:${struc[2]}`);
     return new Structure({
         tfgid: struc[0],
         gid: struc[1],
