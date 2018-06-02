@@ -42,11 +42,11 @@ export const build = (reg,map) => async (ml) => {
 
                 const temp = structs.filter(v => v.rid === z)[0];
 
-                return new MappLayer({
+                return {
                     x: k,
                     y: j,
                     img: temp.value
-                });
+                };
             });
         });
     })
