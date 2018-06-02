@@ -25,18 +25,18 @@ export const registry_pokemon = new Map();
 export const domParser = new DOMParser();
 
 //
-export const LogType = {
-    INFO:  ["INFO",  "000000"],
-    GOOD:  ["GOOD",  "4CAF50"],
-    WARN:  ["WARN",  "FF9800"],
-    ERROR: ["ERROR", "F44336"],
-    DEBUG: [""]
-};
+export const LogType = Object.freeze({
+    INFO:  "INFO",
+    GOOD:  "GOOD",
+    WARN:  "WARN",
+    ERROR: "ERROR",
+    DEBUG: ""
+});
 
 //
 export function log(t, m) {
-    if (t[0].length > 0) {
-        LOG_ELEMENT.innerHTML += `<div style="color:#${t[1]}">[${t[0]}]: ${m}</div>`;
+    if (t.length > 0) {
+        LOG_ELEMENT.innerHTML += `<div class="${t.toLowerCase()}">[${t}]: ${m}</div>`;
         LOG_ELEMENT.scrollTop = LOG_ELEMENT.scrollHeight;
     }
     console.debug(m);

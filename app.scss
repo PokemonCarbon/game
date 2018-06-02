@@ -18,5 +18,18 @@ body {
         flex-direction: column;
         overflow-y: scroll;
         margin: 0;
+
+        .info {
+            color: #000000;
+        }
+        .good {
+            color: #4CAF50;
+        }
+        .warn {
+            color: #FF9800;
+        }
+        .error {
+            color: #F44336;
+        }
     }
 }
