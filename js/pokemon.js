@@ -3,7 +3,8 @@
 //
 "use strict";
 //
-import { log, LogType, ffetch, pipe, parse_ini } from "./util.js";
+import { pipe } from "./imports.js";
+import { log, LogType, ffetch, parse_ini } from "./util.js";
 
 //
 export class Pokemon {

@@ -3,7 +3,8 @@
 //
 "use strict";
 //
-import { log, LogType, pipe, ffetch, parse_ini, arraybuffer_to_image, arraybuffer_to_audio } from "./util.js";
+import { pipe } from "./imports.js";
+import { log, LogType, ffetch, parse_ini, arraybuffer_to_image, arraybuffer_to_audio } from "./util.js";
 import * as MappLayer from "./maplayer.js";
 
 //

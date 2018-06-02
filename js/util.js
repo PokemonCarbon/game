@@ -3,13 +3,7 @@
 //
 "use strict";
 //
-import * as i from "./imports.js";
-
-//
-export const pipe = i.pipeline;
-export const pipe_async = async (input, ...methods) => await methods.reduce(async (ac,cv) => await cv(ac), input);
-export const Pencil = i.Pencil;
-export const geometry = i.geometry;
+import { pipe, Pencil } from "./imports.js";
 
 //
 const LOG_ELEMENT = document.getElementById("log");

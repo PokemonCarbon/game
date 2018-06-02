@@ -3,7 +3,8 @@
 //
 "use strict";
 //
-import { LogType, log, ffetch, registry_regions, registry_pokemon, registry_maps, registry_structures, pipe } from "./util.js";
+import { pipe } from "./imports.js";
+import { LogType, log, ffetch, registry_regions, registry_pokemon, registry_maps, registry_structures } from "./util.js";
 import * as Pokemon from "./pokemon.js";
 import * as Type from "./type.js";
 import * as Mapp from "./map.js";
