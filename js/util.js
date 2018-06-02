@@ -86,7 +86,12 @@ export function arraybuffer_to_image() {
             const ui8a = new Uint8Array(ab);
             const img = document.createElement("img");
             img.addEventListener("load", function() {
-                resolve(this);
+                const c = document.createElement("canvas");
+                c.width = this.width;
+                c.height = this.height;
+                const d = c.getContext("2d");
+                d.drawImage(this, 0, 0);
+                resolve(c);
             });
             img.src = (pipe(ui8a, ui8a_to_blob("image/png"), URL.createObjectURL));
         });
