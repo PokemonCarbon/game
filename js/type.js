@@ -3,7 +3,7 @@
 //
 "use strict";
 //
-import * as a from "./util.js";
+import { } from "./util.js";
 
 //
 export class Type {
