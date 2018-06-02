@@ -35,8 +35,8 @@ export const build = (reg,map) => async (ml) => {
                     return 0;
                 }
                 const fh = parseInt(z & FLAG_FLIPPED_HORIZONTAL) != 0;
-				const fv = parseInt(z & FLAG_FLIPPED_VERTICAL)   != 0;
                 const fd = parseInt(z & FLAG_FLIPPED_DIAGONAL)   != 0;
+                const fv = parseInt(z & FLAG_FLIPPED_VERTICAL)   != 0;
 
                 z &= ~(FLAG_FLIPPED_HORIZONTAL | FLAG_FLIPPED_VERTICAL | FLAG_FLIPPED_DIAGONAL);
 
