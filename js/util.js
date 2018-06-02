@@ -32,6 +32,12 @@ export const LogType = Object.freeze({
     ERROR: "ERROR",
     DEBUG: ""
 });
+export const Direction = Object.freeze({
+    Up: Symbol(0),
+    Down: Symbol(1),
+    Left: Symbol(2),
+    Right: Symbol(3)
+});
 
 //
 export function log(t, m) {

@@ -4,7 +4,7 @@
 "use strict";
 //
 import { geometry, pipe_async } from "./imports.js";
-import { } from "./util.js";
+import { Direction } from "./util.js";
 import * as Region from "./region.js";
 
 //
@@ -22,7 +22,7 @@ export const build = () => {
         imgs: [null,null,null],
         map: null,
         pos: new geometry.Point(0,0),
-        direction: null
+        direction: Direction.Down
     });
 };
 export const setMap = (reg, mapID) => async (player) => {
