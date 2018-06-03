@@ -5,6 +5,7 @@
 //
 import { addKeyDownListener, Keys, pipe } from "./imports.js";
 import { WIDTH, HEIGHT, pen, Direction, options } from "./util.js";
+import * as Player from "./player.js";
 import * as Mapp from "./map.js";
 
 //
@@ -22,6 +23,7 @@ export const build = (player) => {
 };
 export const draw = (game) => {
     pen.clear();
+    pipe(game, update);
     pen.drawRect(0, 0, WIDTH, HEIGHT, "fill", "black");
     pipe(game.player.map, Mapp.draw(game.player));
     //
@@ -32,4 +34,7 @@ export const draw = (game) => {
             vel: ${game.player.vel.spread().slice(0,2)}
             walk: ${pipe(game.player.map, Mapp.isZoneWalkable(...game.player.pos.spread()))}
     `;
+};
+export const update = (game) => {
+    pipe(game.player, Player.update);
 };
