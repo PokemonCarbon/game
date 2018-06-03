@@ -25,7 +25,6 @@ Promise.all(modsList.map((v) => Region.build(v)))
     log(LogType.GOOD, "Starting game!");
 
     const game = pipe(pipe({}, Player.build), Game.build);
-
     let mapID = x[0].maps[0]; // pallet_town/home/attic
     await pipe_async(game.player, Player.setMap(x[0], mapID));
     pipe(game.player, Player.setPos(5, 6));
