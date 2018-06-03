@@ -2,7 +2,7 @@ body {
     margin: 0px;
     width: 100vw;
     max-height: 100vh;
-    overflow-x: hidden;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 
@@ -11,25 +11,22 @@ body {
         margin-bottom: 1em;
         border: 1px solid green;
     }
-    #log {
-        flex-grow: 1;
-        border: 1px solid black;
-        display: flex;
-        flex-direction: column;
-        overflow-y: scroll;
-        margin: 0;
-
-        .info {
-            color: #000000;
-        }
-        .good {
-            color: #4CAF50;
-        }
-        .warn {
-            color: #FF9800;
-        }
-        .error {
-            color: #F44336;
+    > div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+        #log {
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            margin: 0;
+            max-height: 100%;
+    
+            .info  { color: #000000; }
+            .good  { color: #4CAF50; }
+            .warn  { color: #FF9800; }
+            .error { color: #F44336; }
         }
     }
 }
