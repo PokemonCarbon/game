@@ -28,9 +28,15 @@ Promise.all(modsList.map((v) => Region.build(v)))
     let mapID = x[0].maps[0]; // pallet_town/home/attic
     await pipe_async(game.player, Player.setMap(x[0], mapID));
     pipe(game.player, Player.setPos(5, 6));
+
+    const stats = new Stats();
+    stats.showPanel(0);
+    document.body.children[1].children[1].appendChild(stats.domElement);
     
     requestAnimationFrame(function render() {
+        stats.begin();
         pipe(game, Game.draw);
+        stats.end();
         requestAnimationFrame(render);
     });
 });
