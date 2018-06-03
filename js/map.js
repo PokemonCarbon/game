@@ -4,7 +4,8 @@
 "use strict";
 //
 import { pipe } from "./imports.js";
-import { log, LogType, ffetch, parse_ini, arraybuffer_to_image, arraybuffer_to_audio } from "./util.js";
+import { log, LogType, ffetch, parse_ini, arraybuffer_to_image, arraybuffer_to_audio, pen, options } from "./util.js";
+import * as Player from "./player.js";
 import * as MappLayer from "./maplayer.js";
 
 //
@@ -65,4 +66,16 @@ export const isZoneWalkable = (x,y) => (map) => {
     if (x < 0 || x >= map.width) return false;
     if (y < 0 || y >= map.height) return false;
     return map.walk_con.getImageData(x,y,1,1).data[0] !== 0;
+};
+export const draw = (player) => (map) => {
+    let mx = MappLayer.map_x - ((player.pos.x * 32)|0);
+    let my = MappLayer.map_y - ((player.pos.y * 32)|0);
+
+    for (let i = 0; i < map.layers.length; i++) {
+        pipe(map.layers[i], MappLayer.draw(mx, my));
+        //
+        if (i === player.pos.z) {
+            pipe(player, Player.draw);
+        }
+    }
 };
