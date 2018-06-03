@@ -72,3 +72,6 @@ export const build = (reg,map) => async (ml) => {
         });
     });
 };
+export const draw = (x,y) => (ml) => {
+    pen.drawImage(ml.value, 0, 0, ml.width, ml.height, x, y, ml.width, ml.height, 0);
+};
