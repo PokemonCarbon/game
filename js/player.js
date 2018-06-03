@@ -58,3 +58,8 @@ export const update = (player) => {
     //
     player.vel.sub(new geometry.Point(...player.vel.spread().map(v => Math.sign(v))));
 };
+export const draw = (player) => {
+    let x = WIDTH / 2 - 16;
+    let y = HEIGHT / 2 - 16;
+    pen.drawRect(x, y, 32, 32, "fill", "blue");
+};
