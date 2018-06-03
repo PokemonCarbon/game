@@ -54,9 +54,15 @@ export const load = (reg) => async (map) => {
     .then(x => {
         const [walk, teleport, bgm, ...layers] = x;
         map.walk = walk;
+        map.walk_con = map.walk.getContext("2d"),
         map.teleport = teleport;
         map.song = bgm;
         map.layers = layers;
         return Promise.resolve(map);
     });
+};
+export const isZoneWalkable = (x,y) => (map) => {
+    if (x < 0 || x >= map.width) return false;
+    if (y < 0 || y >= map.height) return false;
+    return map.walk_con.getImageData(x,y,1,1).data[0] !== 0;
 };
