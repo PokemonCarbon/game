@@ -78,4 +78,13 @@ export const draw = (player) => (map) => {
             pipe(player, Player.draw);
         }
     }
+    if (options.debug) {
+        for (let i = 0; i < map.height; i++) {
+            for (let j = 0; j < map.width; j++) {
+                if (!(pipe(map, isZoneWalkable(j, i)))) {
+                    pen.drawRect(mx + j * 32, my + i * 32, 32, 32, "fill", "red", 0.5);
+                }
+            }
+        }
+    }
 };

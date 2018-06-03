@@ -24,6 +24,10 @@ export const registry_structures = new Map();
 export const registry_pokemon = new Map();
 export const domParser = new DOMParser();
 
+export const options = {
+    debug: false
+};
+
 //
 export const LogType = Object.freeze({
     INFO:  "INFO",
