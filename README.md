@@ -1,5 +1,7 @@
 # Pokémon Carbon
 
+![loc](https://tokei.rs/b1/github/pokemoncarbon/game)
+
 A built from scratch fully modular Pokémon game engine written entirely in vanilla Javascript runnable in your browser today.
 
 ## About
