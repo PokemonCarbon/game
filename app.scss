@@ -12,10 +12,11 @@ body {
         border: 1px solid green;
     }
     > div {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: row;
         
         #log {
+            flex-grow: 2;
             border: 1px solid black;
             display: flex;
             flex-direction: column;
@@ -27,6 +28,9 @@ body {
             .good  { color: #4CAF50; }
             .warn  { color: #FF9800; }
             .error { color: #F44336; }
+        }
+        div {
+            flex-grow: 1;
         }
     }
 }
