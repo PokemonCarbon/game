@@ -14,6 +14,13 @@ export class Game {
         for (const o in args) {
             this[o] = args[o];
         }
+        addKeyDownListener((e) => {
+            if (e.code === Keys.ArrowUp)         this.player.direction = Direction.Up;
+            if (e.code === Keys.ArrowRight)      this.player.direction = Direction.Right;
+            if (e.code === Keys.ArrowDown)       this.player.direction = Direction.Down;
+            if (e.code === Keys.ArrowLeft)       this.player.direction = Direction.Left;
+            if (e.code === Keys.F9 && e.ctrlKey) options.debug = !options.debug;
+        });
     }
 }
 export const build = (player) => {
