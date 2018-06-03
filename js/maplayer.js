@@ -11,6 +11,8 @@ import { get } from "./region.js";
 export const FLAG_FLIPPED_HORIZONTAL = 0x80000000;
 export const FLAG_FLIPPED_VERTICAL   = 0x40000000;
 export const FLAG_FLIPPED_DIAGONAL   = 0x20000000;
+export const map_x = (WIDTH / 2) - 16;
+export const map_y = (HEIGHT / 2) - 16;
 
 //
 export class MappLayer {
