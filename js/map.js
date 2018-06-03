@@ -39,20 +39,20 @@ export const load = (reg) => async (map) => {
     const r_walk = ffetch(`../${reg.id}/maps/${map.id}/walk.png`, "arrayBuffer");
     const r_teleport = ffetch(`../${reg.id}/maps/${map.id}/teleport.txt`, "text");
     const r_bgm = ffetch(`../${reg.id}/maps/${map.id}/${map.bgm}`, "arrayBuffer");
-    const r_layers = new Array(map.layers).fill(0).map((x,i) => ffetch(`../${reg.id}/maps/${map.id}/layer-${i}.json`, "json"));
-    return await Promise.resolve([r_walk, r_teleport, r_bgm, ...r_layers])
+    const r_layers = ffetch(`../${reg.id}/maps/${map.id}/layers.json`, "json");
+    return await Promise.resolve([r_walk, r_teleport, r_bgm, r_layers])
     .then(x => Promise.all(x))
     .then(x => {
-        const [walk, teleport, bgm, ...layers] = x;
+        const [walk, teleport, bgm, layers] = x;
         return Promise.all([
             pipe(walk, arraybuffer_to_image(map.width, map.height)),
             teleport,
             pipe(bgm, arraybuffer_to_audio),
-            ...layers.map(y => MappLayer.build(reg,map)(y))
+            pipe(layers, MappLayer.build(reg,map))
         ]);
     })
     .then(x => {
-        const [walk, teleport, bgm, ...layers] = x;
+        const [walk, teleport, bgm, layers] = x;
         map.walk = walk;
         map.walk_con = map.walk.getContext("2d"),
         map.teleport = teleport;
