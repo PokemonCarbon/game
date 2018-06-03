@@ -4,7 +4,7 @@
 "use strict";
 //
 import { pipe } from "./imports.js";
-import { } from "./util.js";
+import { pen, WIDTH, HEIGHT } from "./util.js";
 import { get } from "./region.js";
 
 //
