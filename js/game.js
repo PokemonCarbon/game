@@ -28,4 +28,12 @@ export const draw = (game) => {
     pen.clear();
     pen.drawRect(0, 0, WIDTH, HEIGHT, "fill", "black");
     pipe(game.player.map, Mapp.draw(game.player));
+    //
+    document.body.children[1].children[1].children[1].textContent = `
+        player:
+            dir: ${Object.keys(Direction)[Object.values(Direction).indexOf(game.player.direction)]}
+            pos: ${game.player.pos.spread().slice(0,3).map(x => x.toFixed(1))}
+            vel: ${game.player.vel.spread().slice(0,2)}
+            walk: ${pipe(game.player.map, Mapp.isZoneWalkable(...game.player.pos.spread()))}
+    `;
 };

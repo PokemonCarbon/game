@@ -32,6 +32,7 @@ Promise.all(modsList.map((v) => Region.build(v)))
     const stats = new Stats();
     stats.showPanel(0);
     document.body.children[1].children[1].appendChild(stats.domElement);
+    document.body.children[1].children[1].appendChild(document.createElement("pre"));
     
     requestAnimationFrame(function render() {
         stats.begin();
