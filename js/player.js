@@ -23,6 +23,7 @@ export const build = () => {
         map: null,
         direction: Direction.Down,
         pos: new geometry.Point(0,0,0),
+        vel: new geometry.Point(0,0)
     });
 };
 export const setMap = (reg, mapID) => async (player) => {
