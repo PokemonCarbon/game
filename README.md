@@ -2,6 +2,8 @@
 
 ![loc](https://tokei.rs/b1/github/pokemoncarbon/game)
 ![contribs](https://img.shields.io/github/contributors/pokemoncarbon/game.svg)
+![issues](https://img.shields.io/github/issues/pokemoncarbon/game.svg)
+![prs](https://img.shields.io/github/issues-pr/pokemoncarbon/game.svg)
 
 A built from scratch fully modular Pokémon game engine written entirely in vanilla Javascript.
 
